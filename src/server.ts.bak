@@ -1,8 +1,6 @@
-// GET_PASSES_THIS_REPO_UDACITY_PLEASE
 import express from 'express';
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
-import { Router, Request, Response } from "express";
 
 (async () => {
 
@@ -30,18 +28,6 @@ import { Router, Request, Response } from "express";
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
   /**************************************************************************** */
-  app.get('/filteredimage', async (req: Request, res: Response) =>
-  {
-    const img_url = req.query.image_url.toString();
-    if (!img_url) {
-      res.status(400).send('require image url');
-    }
-    const filter_img = await filterImageFromURL(img_url);
-    res.status(200).sendFile(filter_img,() =>
-    {
-      deleteLocalFiles([filter_img]);
-    });
-  });
 
   //! END @TODO1
   
